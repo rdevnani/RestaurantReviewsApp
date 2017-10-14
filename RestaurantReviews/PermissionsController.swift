@@ -125,7 +125,7 @@ class PermissionsController: UIViewController {
                 guard let token = params["access_token"] as? String,
                     let expiration = params["expires_in"] as? TimeInterval else {
                         return }
-                
+                let account = YelpAccount(accessToken: token, expiration: expiration, grantDate: Date())
             } else {
                 print("Authorization was cancelled or something went wrong: \(error!)")
             }

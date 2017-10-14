@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		865C6E4B1F92D2130079895E /* YelpAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C6E4A1F92D2130079895E /* YelpAccount.swift */; };
 		86E556FE1F91BD60009891B8 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E556FD1F91BD60009891B8 /* OAuth2.framework */; };
 		97D629DA1EC23110007BE0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D629D91EC23110007BE0CE /* AppDelegate.swift */; };
 		97D629DC1EC23110007BE0CE /* YelpSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D629DB1EC23110007BE0CE /* YelpSearchController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		865C6E4A1F92D2130079895E /* YelpAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAccount.swift; sourceTree = "<group>"; };
 		86E556FD1F91BD60009891B8 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
 		97D629D61EC23110007BE0CE /* RestaurantReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D629D91EC23110007BE0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				97D62A041EC233D8007BE0CE /* PermissionsController.swift */,
+				865C6E4A1F92D2130079895E /* YelpAccount.swift */,
 			);
 			name = Permissions;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				97D629F41EC231D2007BE0CE /* YelpUser.swift in Sources */,
 				97D62A131EC2398C007BE0CE /* YelpReviewsDataSource.swift in Sources */,
 				97D62A0C1EC2385A007BE0CE /* Endpoint.swift in Sources */,
+				865C6E4B1F92D2130079895E /* YelpAccount.swift in Sources */,
 				97D629DC1EC23110007BE0CE /* YelpSearchController.swift in Sources */,
 				97D62A0A1EC2377A007BE0CE /* YelpSearchResultsDataSource.swift in Sources */,
 				97D629F21EC231CC007BE0CE /* YelpReview.swift in Sources */,
