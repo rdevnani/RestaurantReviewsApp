@@ -126,15 +126,18 @@ class PermissionsController: UIViewController {
                     let expiration = params["expires_in"] as? TimeInterval else {
                         return }
                 let account = YelpAccount(accessToken: token, expiration: expiration, grantDate: Date())
+                do {
+                    try? account.save() // REMOVE ? FROM TRY BY CODING ERROR HANDLING
+                    self.oauthTokenButton.setTitle("OAuth Token Granted", for: .disabled)
+                    self.oauthTokenButton.isEnabled = false
+                }
             } else {
                 print("Authorization was cancelled or something went wrong: \(error!)")
             }
-            
         }
     }
     
     func dismissPermissions() {
         dismiss(animated: true, completion: nil)
     }
-
 }

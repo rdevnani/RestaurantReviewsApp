@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86186ABB1F92E0330025ED7C /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86186ABA1F92E0330025ED7C /* Locksmith.framework */; };
 		865C6E4B1F92D2130079895E /* YelpAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C6E4A1F92D2130079895E /* YelpAccount.swift */; };
 		86E556FE1F91BD60009891B8 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E556FD1F91BD60009891B8 /* OAuth2.framework */; };
 		97D629DA1EC23110007BE0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D629D91EC23110007BE0CE /* AppDelegate.swift */; };
@@ -34,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86186AB61F92DCF50025ED7C /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Locksmith/Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
+		86186AB81F92DDB40025ED7C /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = ../../../../Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
+		86186ABA1F92E0330025ED7C /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		865C6E4A1F92D2130079895E /* YelpAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAccount.swift; sourceTree = "<group>"; };
 		86E556FD1F91BD60009891B8 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
 		97D629D61EC23110007BE0CE /* RestaurantReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86E556FE1F91BD60009891B8 /* OAuth2.framework in Frameworks */,
+				86186ABB1F92E0330025ED7C /* Locksmith.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,9 @@
 		86E556FC1F91BD60009891B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86186AB61F92DCF50025ED7C /* Locksmith.framework */,
+				86186AB81F92DDB40025ED7C /* Locksmith.framework */,
+				86186ABA1F92E0330025ED7C /* Locksmith.framework */,
 				86E556FD1F91BD60009891B8 /* OAuth2.framework */,
 			);
 			name = Frameworks;
@@ -247,6 +255,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/OAuth2.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
 			);
 			outputPaths = (
 			);
@@ -417,6 +426,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Locksmith/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RestaurantReviews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -434,6 +444,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Locksmith/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RestaurantReviews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
