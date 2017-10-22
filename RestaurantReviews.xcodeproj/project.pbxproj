@@ -11,6 +11,8 @@
 		86186ABB1F92E0330025ED7C /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86186ABA1F92E0330025ED7C /* Locksmith.framework */; };
 		865C6E4B1F92D2130079895E /* YelpAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C6E4A1F92D2130079895E /* YelpAccount.swift */; };
 		86DF4BCC1F9C2EFA006E2603 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86DF4BCB1F9C2EFA006E2603 /* Info.plist */; };
+		86DF4BCE1F9C3388006E2603 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF4BCD1F9C3388006E2603 /* APIClient.swift */; };
+		86DF4BD01F9C3B48006E2603 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF4BCF1F9C3B48006E2603 /* Result.swift */; };
 		86E556FE1F91BD60009891B8 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E556FD1F91BD60009891B8 /* OAuth2.framework */; };
 		97D629DA1EC23110007BE0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D629D91EC23110007BE0CE /* AppDelegate.swift */; };
 		97D629DC1EC23110007BE0CE /* YelpSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D629DB1EC23110007BE0CE /* YelpSearchController.swift */; };
@@ -43,6 +45,8 @@
 		86186ABA1F92E0330025ED7C /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		865C6E4A1F92D2130079895E /* YelpAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAccount.swift; sourceTree = "<group>"; };
 		86DF4BCB1F9C2EFA006E2603 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../../Downloads/iOS10-RestaurantReviews-S2/RestaurantReviews/RestaurantReviews/Info.plist"; sourceTree = "<group>"; };
+		86DF4BCD1F9C3388006E2603 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		86DF4BCF1F9C3B48006E2603 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		86E556FD1F91BD60009891B8 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
 		97D629D61EC23110007BE0CE /* RestaurantReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D629D91EC23110007BE0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			children = (
 				97D629FA1EC232FA007BE0CE /* JSONDecodable.swift */,
 				97D62A0B1EC2385A007BE0CE /* Endpoint.swift */,
+				86DF4BCD1F9C3388006E2603 /* APIClient.swift */,
+				86DF4BCF1F9C3B48006E2603 /* Result.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				97D629F61EC23208007BE0CE /* Coordinate.swift in Sources */,
 				97D62A111EC2395E007BE0CE /* YelpBusinessDetailViewModel.swift in Sources */,
 				97D629F41EC231D2007BE0CE /* YelpUser.swift in Sources */,
+				86DF4BCE1F9C3388006E2603 /* APIClient.swift in Sources */,
 				97D62A131EC2398C007BE0CE /* YelpReviewsDataSource.swift in Sources */,
 				97D62A0C1EC2385A007BE0CE /* Endpoint.swift in Sources */,
 				865C6E4B1F92D2130079895E /* YelpAccount.swift in Sources */,
@@ -287,6 +294,7 @@
 				97D62A0A1EC2377A007BE0CE /* YelpSearchResultsDataSource.swift in Sources */,
 				97D629F21EC231CC007BE0CE /* YelpReview.swift in Sources */,
 				97D629ED1EC231AA007BE0CE /* YelpBusinessDetailController.swift in Sources */,
+				86DF4BD01F9C3B48006E2603 /* Result.swift in Sources */,
 				97D62A011EC23350007BE0CE /* BusinessHours.swift in Sources */,
 				97D629DA1EC23110007BE0CE /* AppDelegate.swift in Sources */,
 				97D62A151EC239D6007BE0CE /* ReviewCell.swift in Sources */,
