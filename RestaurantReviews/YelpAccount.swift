@@ -17,8 +17,16 @@ struct YelpAccount {
     static let service = "Yelp"
 }
 
-// To save and load data
 extension YelpAccount {
+    
+    static var isAuthorized: Bool {
+        if let _ = loadFromKeychain() {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     struct Keys {
         static let token = "token"
         static let expirationPeriod = "expirationPeriod"
@@ -27,23 +35,18 @@ extension YelpAccount {
     
     func save() throws {
         try Locksmith.saveData(data: [Keys.token: accessToken, Keys.expirationPeriod: expiration, Keys.grantDate: grantDate.timeIntervalSince1970], forUserAccount: YelpAccount.service)
-        
     }
     
     static func loadFromKeychain() -> YelpAccount? {
-        // Fetching the Dictionary
-        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: YelpAccount.service),
-        let token = dictionary[Keys.token] as? String,
-        let expiration = dictionary[Keys.expirationPeriod] as? TimeInterval,
-            let grantDateValue = dictionary[Keys.grantDate] as? TimeInterval else {
-                return nil
+        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: YelpAccount.service), let token = dictionary[Keys.token] as? String, let expiration = dictionary[Keys.expirationPeriod] as? TimeInterval, let grantDateValue = dictionary[Keys.grantDate] as? TimeInterval else {
+            return nil
         }
         
         let grantDate = Date(timeIntervalSince1970: grantDateValue)
+        
         return YelpAccount(accessToken: token, expiration: expiration, grantDate: grantDate)
     }
 }
-
 
 
 

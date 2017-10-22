@@ -8,17 +8,21 @@
 
 import UIKit
 import OAuth2
+import CoreLocation
 
-class PermissionsController: UIViewController {
-    
+class PermissionsController: UIViewController, LocationPermissionsDelegate {
     
     let oauth = OAuth2ClientCredentials(settings: [
-        "client_id": "ORyZE_8LzzYP-iZi6Dkkqw",
-        "client_secret": "ucYE6wVptTq1XSXjfFj5BOUOkqPx0FLWdXXxDJzTJFqpxjHTBpa66Xz8vFiK5Tot",
+        "client_id": "MqV3bYw__Dpfmh9Q3ZH6ag",
+        "client_secret": "Pk12UtWpaatqtc4lnpe3CHb7gOs1r0AjpVvg2fZkD7Z9E6DwjlwQNnHysuvoQUoD",
         "authorize_uri": "https://api.yelp.com/oauth2/token",
         "secret_in_body": true,
         "keychain": false
         ])
+    
+    lazy var locationManager: LocationManager = {
+        return LocationManager(delegate: nil, permissionsDelegate: self)
+    }()
     
     var isAuthorizedForLocation: Bool
     var isAuthenticatedWithToken: Bool
@@ -74,19 +78,19 @@ class PermissionsController: UIViewController {
         fatalError("init coder not implemented")
     }
     
-    init(isAuthorizedForLocation authorized: Bool, isAuthenticatedWithToken authenticated: Bool) {
-        self.isAuthorizedForLocation = authorized
-        self.isAuthenticatedWithToken = authenticated
+    init(isAuthorizedForLocation locationAuthorization: Bool, isAuthorizedWithToken tokenAuthorization: Bool) {
+        self.isAuthorizedForLocation = locationAuthorization
+        self.isAuthenticatedWithToken = tokenAuthorization
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor(colorLiteralRed: 95/255.0, green: 207/255.0, blue: 128/255.0, alpha: 1.0)
     }
     
-
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -112,27 +116,34 @@ class PermissionsController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
             dismissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
             dismissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+            ])
         
     }
     
     func requestLocationPermissions() {
+        do {
+            try locationManager.requestLocationAuthorization()
+        } catch LocationError.disallowedByUser {
+            // Show alert to users
+        } catch let error {
+            print("Location Authorization Error: \(error.localizedDescription)")
+        }
     }
     
     func requestOAuthToken() {
         oauth.authorize { authParams, error in
             if let params = authParams {
-                guard let token = params["access_token"] as? String,
-                    let expiration = params["expires_in"] as? TimeInterval else {
-                        return }
+                guard let token = params["access_token"] as? String, let expiration = params["expires_in"] as? TimeInterval else { return }
+                
                 let account = YelpAccount(accessToken: token, expiration: expiration, grantDate: Date())
+                
                 do {
-                    try? account.save() // REMOVE ? FROM TRY BY CODING ERROR HANDLING
+                    try? account.save()
                     self.oauthTokenButton.setTitle("OAuth Token Granted", for: .disabled)
                     self.oauthTokenButton.isEnabled = false
                 }
             } else {
-                print("Authorization was cancelled or something went wrong: \(error!)")
+                print("Authorization was cancelled or went wrong: \(error!)")
             }
         }
     }
@@ -140,4 +151,26 @@ class PermissionsController: UIViewController {
     func dismissPermissions() {
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: Location Permissions Delegate
+    func authorizationSucceeded() {
+        locationPermissionButton.setTitle("Location Permissions Granted", for: .disabled)
+        locationPermissionButton.isEnabled = false
+    }
+    
+    func authorizationFailedWithStatus(_ status: CLAuthorizationStatus) {
+        //
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
