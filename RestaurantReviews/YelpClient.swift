@@ -26,6 +26,8 @@ class YelpClient: APIClient {
         let endpoint = Yelp.search(term: term, coordinate: coordinate, radius: radius, categories: categories, limit: limit, sortBy: sortType)
         
         let request = endpoint.requestWithAuthorizationHeader(oauthToken: token)
+        // print(request)
+        // print(request.allHTTPHeaderFields)
         
         fetch(with: request, parse: { json -> [YelpBusiness] in
             guard let businesses = json["businesses"] as? [[String: Any]] else { return [] }
