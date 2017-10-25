@@ -24,7 +24,6 @@ class YelpClient: APIClient {
     func search(withTerm term: String, at coordinate: Coordinate, categories: [YelpCategory] = [], radius: Int? = nil, limit: Int = 50, sortBy sortType: Yelp.YelpSortType = .rating, completion: @escaping (Result<[YelpBusiness], APIError>) -> Void) {
         
         let endpoint = Yelp.search(term: term, coordinate: coordinate, radius: radius, categories: categories, limit: limit, sortBy: sortType)
-        
         let request = endpoint.requestWithAuthorizationHeader(oauthToken: token)
         // print(request)
         // print(request.allHTTPHeaderFields)
@@ -34,6 +33,26 @@ class YelpClient: APIClient {
             return businesses.flatMap { YelpBusiness(json: $0) }
             
         }, completion: completion)
+    }
+    
+    // Getting instance of Yelp Business with an ID
+    func businessWithId(_ id: String, completion: @escaping (Result<YelpBusiness, APIError>) -> Void) {
+        let endpoint = Yelp.business(id: id)
+        let request = endpoint.requestWithAuthorizationHeader(oauthToken: token)
+        
+        fetch(with: request, parse: { json -> YelpBusiness? in return YelpBusiness(json: json)
+    },
+              completion: completion)
+    }
+    
+    func updateWithHoursAndPhotos(_ business: YelpBusiness, completion: @escaping (Result<YelpBusiness, APIError>) -> Void) {
+        let endpoint = Yelp.business(id: business.id)
+        let request = endpoint.requestWithAuthorizationHeader(oauthToken: token)
+        
+        fetch(with: request, parse: { json -> YelpBusiness? in business.updateWithHoursAndPhotos(json: json)
+            return business
+        },
+              completion: completion)
     }
 }
 
