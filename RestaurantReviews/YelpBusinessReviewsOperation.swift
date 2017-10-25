@@ -1,5 +1,5 @@
 //
-//  YelpBusinessDetailsOperation.swift
+//  YelpBusinessReviewsOperation.swift
 //  RestaurantReviews
 //
 //  Created by Rohit Devnani on 25/10/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class YelpBusinessDetailsOperation: Operation {
+class YelpBusinessReviewsOperation: Operation {
     let business: YelpBusiness
     let client: YelpClient
     
@@ -55,26 +55,20 @@ class YelpBusinessDetailsOperation: Operation {
         
         isExecuting = true
         
-        client.updateWithHoursAndPhotos(business) { [unowned self] result in
+        client.reviews(for: business) { [unowned self] result in
             switch result {
-            case .success(_):
+            case.success(let reviews):
+                self.business.reviews = reviews
                 self.isExecuting = false
                 self.isFinished = true
-            case .failure(let error):
-                print(error)
+            case.failure(let error):
+                print(error) // or we can crash
                 self.isExecuting = false
                 self.isFinished = true
             }
         }
     }
 }
-
-
-
-
-
-
-
 
 
 
