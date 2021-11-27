@@ -1,5 +1,5 @@
 # RestaurantReviewsApp
-An app to read reviews on restaurants in our area using the Yelp API Using..
+An app to read reviews on restaurants in our area using the Yelp API
 
 
 Protocol and generic based networking
